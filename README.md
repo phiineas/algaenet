@@ -6,29 +6,30 @@ This project implements a deep learning model to classify different types of alg
 
 ## Data Preparation and Creation
 
-The dataset preparation involves organizing raw image and label data into a structured format suitable for training a deep learning model. This process is handled by the `algaenet/cnn_model/data_creation.ipynb` notebook.
+## Initial Data Organization (Training Set)
 
-**1. Initial Data Organization (Training Set):**
-    *   **Base Directory:** Raw data is located in `algaenet/dataset/train`.
-    *   **Image and Label Folders:** Contains an `images` folder (e.g., `.jpg` files) and a `labels` folder (e.g., `.txt` files, like `algaenet/dataset/train/labels/00316.txt`). Each label file corresponds to an image file.
-    *   **Class Mapping:** A predefined mapping in `data_creation.ipynb` (see cell with `class_names = {0: "Platymonas", ...}`) links class IDs from label files to class names.
-    *   **Creating Class Subdirectories:** For each class, a subdirectory is created within `algaenet/dataset/train/images` (e.g., `algaenet/dataset/train/images/Platymonas`).
-    *   **Processing Labels and Moving Images:**
-        *   The `data_creation.ipynb` script iterates through label files.
-        *   It reads the class ID.
-        *   The corresponding image is moved from the root `images` folder to its class subdirectory.
-        *   Output from `data_creation.ipynb` (e.g., "moved 0 images", "skipped 700 images") indicates the outcome of this process. The file counts per class (e.g., "Chlorella contains 148 files") are also logged.
+- **Base Directory:** Raw data is located in `algaenet/dataset/train`.
+- **Image and Label Folders:** Contains an `images` folder (e.g., `.jpg` files) and a `labels` folder (e.g., `.txt` files, like `algaenet/dataset/train/labels/00316.txt`). Each label file corresponds to an image file.
+- **Class Mapping:** A predefined mapping in `data_creation.ipynb` (see cell with `class_names = {0: "Platymonas", ...}`) links class IDs from label files to class names.
+- **Creating Class Subdirectories:** For each class, a subdirectory is created within `algaenet/dataset/train/images` (e.g., `algaenet/dataset/train/images/Platymonas`).
+- **Processing Labels and Moving Images:**
+    - The `data_creation.ipynb` script iterates through label files.
+    - It reads the class ID.
+    - The corresponding image is moved from the root `images` folder to its class subdirectory.
+    - Output from `data_creation.ipynb` (e.g., "moved 0 images", "skipped 700 images") indicates the outcome of this process. The file counts per class (e.g., "Chlorella contains 148 files") are also logged.
 
-**2. Creating the Validation Set:**
-    *   **Source:** Organized training images from `algaenet/dataset/train/images`.
-    *   **Destination:** `algaenet/dataset/val/images`.
-    *   **Splitting Percentage:** 20% of images from each training class are used for validation (defined by `validation_split_percentage = 0.20` in `data_creation.ipynb`).
-    *   **Copying Images:**
-        *   Images are randomly selected and copied to corresponding class subdirectories in `algaenet/dataset/val/images`.
-        *   The `data_creation.ipynb` notebook logs the number of images copied per class (e.g., "copied 29 images to algaenet/dataset/val/images/Chlorella").
+## Creating the Validation Set
 
-**3. Test Set:**
-    *   Located in `algaenet/dataset/test`. The `algaenet/cnn_model/model_2.ipynb` notebook loads test images from this directory.
+- **Source:** Organized training images from `algaenet/dataset/train/images`.
+- **Destination:** `algaenet/dataset/val/images`.
+- **Splitting Percentage:** 20% of images from each training class are used for validation (defined by `validation_split_percentage = 0.20` in `data_creation.ipynb`).
+- **Copying Images:**
+    - Images are randomly selected and copied to corresponding class subdirectories in `algaenet/dataset/val/images`.
+    - The `data_creation.ipynb` notebook logs the number of images copied per class (e.g., "copied 29 images to algaenet/dataset/val/images/Chlorella").
+
+## Test Set
+
+- Located in `algaenet/dataset/test`. The `algaenet/cnn_model/model_2.ipynb` notebook loads test images from this directory.
 
 **Final Structure for `ImageDataGenerator`:**
 ```
