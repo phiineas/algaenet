@@ -104,17 +104,25 @@ Performance is monitored using metrics plotted in `algaenet/cnn_model/model_2.ip
 
 *   **Fine-Tuning Performance Plots:** (Generated from `inceptionv3_finetune_history.csv`)
     *   Visualizations of Training & Validation metrics (Accuracy, Loss, Precision, etc.) over epochs.
-    ![Fine-Tuning Performance](./public/output2.png) 
+    ![Fine-Tuning Performance](./public/output2.png)
 
 *   **Test Predictions Visualization:**
     *   The fine-tuned model predicts on the test set. Sample images with predicted classes are displayed.
-    ![Test Predictions](./public/output3.png)
-
+    ![Test Predictions](./public/output3.png) 
 ## How to Use
 
 1.  **Setup:**
-    *   Ensure Python and libraries from `algaenet/requirements.txt` are installed.
-    *   Prepare the dataset:
+    *   **Create and Activate Virtual Environment (Recommended):**
+        ```bash
+        python -m venv venv
+        .\venv\Scripts\activate  # On Windows
+        # source venv/bin/activate  # On macOS/Linux
+        ```
+    *   **Install Dependencies:** Ensure Python is installed, then install required libraries:
+        ```bash
+        pip install -r algaenet/requirements.txt
+        ```
+    *   **Prepare the Dataset:**
         *   Run `algaenet/cnn_model/data_creation.ipynb` to structure `train` and `val` directories.
         *   Ensure the `test` directory is populated.
 2.  **Run the Model Training Notebook:**
